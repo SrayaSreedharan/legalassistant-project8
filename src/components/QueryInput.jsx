@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const QueryInput = () => {
+function QueryInput({ query, setQuery, onSubmit, loading }) {
   return (
     <div className="bg-white p-4 rounded shadow mb-6">
       <textarea
@@ -18,7 +18,7 @@ const QueryInput = () => {
         {loading ? 'Loading...' : 'Submit'}
       </button>
     </div>
-  )
+  );
 }
 
-export default QueryInput
+export default QueryInput;
