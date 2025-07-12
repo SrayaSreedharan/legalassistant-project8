@@ -15,13 +15,13 @@ function App() {
     setTimeout(() => {
       setShowAnswer(true);
       setLoading(false);
-    }, 1000); // simulate delay
+    }, 1000); 
   };
 
   return (
     <div className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
       <div className="w-full max-w-3xl">
-        <h1 className="text-2xl font-bold mb-4">Lexi Legal Assistant</h1>
+        <h1 className="text-2xl font-bold mb-4">Legal Assistant</h1>
         <QueryInput
           query={query}
           setQuery={setQuery}
