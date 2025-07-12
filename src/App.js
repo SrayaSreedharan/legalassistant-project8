@@ -2,43 +2,52 @@ import React, { useState } from 'react';
 import QueryInput from './components/QueryInput';
 import AnswerCard from './components/AnswerCard';
 import CitationPopup from './components/CitationPopup';
-import { response } from './data/simulatedResponse';
+import { OpenRouter } from './util/openRouterApi';
 
 function App() {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showAnswer, setShowAnswer] = useState(false);
+  const [answer, setAnswer] = useState('');
+  const [citations, setCitations] = useState([]);
   const [popupOpen, setPopupOpen] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setLoading(true);
-    setTimeout(() => {
-      setShowAnswer(true);
+    setAnswer('');
+    setCitations([]);
+
+    try {
+      const { content, citationList } = await OpenRouter(query);
+      setAnswer(content);
+      setCitations(citationList);
+    } catch (error) {
+      console.error("Error fetching OpenRouter response:", error);
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-3xl mx-auto space-y-6">
-         <h1 className="text-2xl font-bold mb-4">Legal Assistant</h1>
+        <h>Legal Assistant</h>
         <QueryInput
           query={query}
           setQuery={setQuery}
           onSubmit={handleSubmit}
           loading={loading}
         />
-        {showAnswer && (
+        {answer && (
           <AnswerCard
-            answer={response.answer}
-            citations={response.citations}
+            answer={answer}
+            citations={citations}
             onCitationClick={() => setPopupOpen(true)}
           />
         )}
       </div>
       {popupOpen && (
         <CitationPopup
-          citation={response.citations[0]}
+          citation={citations[0]}
           onClose={() => setPopupOpen(false)}
         />
       )}

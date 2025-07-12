@@ -1,4 +1,3 @@
-// components/CitationPopup.jsx
 import React from 'react';
 
 function CitationPopup({ citation, onClose }) {
@@ -13,21 +12,15 @@ function CitationPopup({ citation, onClose }) {
         </div>
 
         <div className="p-4 space-y-4 text-sm text-gray-800">
-          <p><strong>📄 Case:</strong> Dani Vs Pritam (FAO No. 4353 of 2012)</p>
-          <p><strong>Source:</strong> {citation.source}</p>
-          <p><strong>Paragraph:</strong> 7</p>
-          <blockquote className="bg-gray-100 border-l-4 border-gray-400 p-3 italic">
-            “{citation.text}”
-          </blockquote>
+          <p><strong>📄 Case:</strong> {citation.source}</p>
+          <p><strong>Quote:</strong> {citation.text}</p>
 
-          <a
-            href={citation.link}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => window.open(citation.link, '_blank')}
             className="inline-block mt-2 text-blue-600 underline"
           >
             📥 View Full PDF
-          </a>
+          </button>
         </div>
       </div>
     </div>
