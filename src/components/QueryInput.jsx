@@ -2,12 +2,12 @@ import React from 'react';
 
 function QueryInput({ query, setQuery, onSubmit, loading }) {
   return (
-    <div className="bg-white p-4 rounded shadow mb-6">
+    <div className="bg-white p-4 rounded-lg shadow">
       <textarea
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Enter your legal query..."
-        className="w-full border rounded p-2 mb-4 resize-none"
+        placeholder="Ask a legal question..."
+        className="w-full border border-gray-300 rounded p-3 mb-4 resize-none"
         rows={4}
       ></textarea>
       <button

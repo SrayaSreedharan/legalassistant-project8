@@ -15,13 +15,13 @@ function App() {
     setTimeout(() => {
       setShowAnswer(true);
       setLoading(false);
-    }, 1000); 
+    }, 1000);
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6 flex flex-col items-center">
-      <div className="w-full max-w-3xl">
-        <h1 className="text-2xl font-bold mb-4">Legal Assistant</h1>
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="max-w-3xl mx-auto space-y-6">
+         <h1 className="text-2xl font-bold mb-4">Legal Assistant</h1>
         <QueryInput
           query={query}
           setQuery={setQuery}
@@ -38,7 +38,7 @@ function App() {
       </div>
       {popupOpen && (
         <CitationPopup
-          link={response.citations[0].link}
+          citation={response.citations[0]}
           onClose={() => setPopupOpen(false)}
         />
       )}
