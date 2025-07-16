@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="w-full bg-white text-gray-700 py-6 px-4 md:px-8 flex flex-col md:flex-row items-center justify-between border-t border-gray mt-12 shadow-sm">
       <p className="text-sm">
         © 2025 AI Component Generator. Built by Sraya Sreedharan.{' '}
-        <a href="https://github.com/srayasreedharan" className="underline hover:text-black transition" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/SrayaSreedharan/legalassistant-project8" className="underline hover:text-black transition" target="_blank" rel="noopener noreferrer">
           View on GitHub
         </a>
       </p>
