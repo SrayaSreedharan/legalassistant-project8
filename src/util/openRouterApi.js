@@ -1,4 +1,6 @@
 export const OpenRouter = async (query) => {
+  console.log("API KEY:", process.env.REACT_APP_OPENROUTER_KEY);
+
   const apiKey = process.env.REACT_APP_OPENROUTER_KEY;
 
   if (!apiKey) {

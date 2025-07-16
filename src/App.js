@@ -3,7 +3,7 @@ import QueryInput from './components/QueryInput';
 import AnswerCard from './components/AnswerCard';
 import CitationPopup from './components/CitationPopup';
 import { OpenRouter } from './util/openRouterApi';
-
+import Footer from './components/Footer';
 function App() {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
@@ -28,29 +28,32 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-3xl mx-auto space-y-6">
-        <h1>Legal Assistant</h1>
-        <QueryInput
-          query={query}
-          setQuery={setQuery}
-          onSubmit={handleSubmit}
-          loading={loading}
-        />
-        {answer && (
-          <AnswerCard
-            answer={answer}
-            citations={citations}
-            onCitationClick={() => setPopupOpen(true)}
+    <div className="min-h-screen flex flex-col bg-gray-100">
+      <main className="flex-grow p-6">
+        <div className="max-w-3xl mx-auto space-y-6">
+          <h1 className="text-2xl font-semibold">Legal Assistant</h1>
+          <QueryInput
+            query={query}
+            setQuery={setQuery}
+            onSubmit={handleSubmit}
+            loading={loading}
+          />
+          {answer && (
+            <AnswerCard
+              answer={answer}
+              citations={citations}
+              onCitationClick={() => setPopupOpen(true)}
+            />
+          )}
+        </div>
+        {popupOpen && (
+          <CitationPopup
+            citation={citations[0]}
+            onClose={() => setPopupOpen(false)}
           />
         )}
-      </div>
-      {popupOpen && (
-        <CitationPopup
-          citation={citations[0]}
-          onClose={() => setPopupOpen(false)}
-        />
-      )}
+      </main>
+      <Footer />
     </div>
   );
 }
